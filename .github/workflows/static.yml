@@ -40,7 +40,9 @@ jobs:
         shell: bash
         run: env
       - name: Build pages
-        run: npm i && SIAPA=${{ env.siapa }} node script.js
+        run: npm i && node script.js
+        env:
+          SIAPA: ${{ vars.SIAPA }}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
