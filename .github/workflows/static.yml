@@ -51,12 +51,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
       - name: Remove artifact
-        run: curl -L \
-          -X DELETE \
-          -H $ACCEPT_HEADER \
-          -H $AUTHORIZATION_HEADER \
-          -H $GITHUB_VERSION_HEADER \
-          https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/${{ steps.upload-artifact.outputs.artifact-id }}
+        run: curl -L -X DELETE -H $ACCEPT_HEADER -H $AUTHORIZATION_HEADER -H $GITHUB_VERSION_HEADER https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/${{ steps.upload-artifact.outputs.artifact-id }}
         env:
           ACCEPT_HEADER: "Accept: application/vnd.github+json"
           AUTHORIZATION_HEADER: "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}"
