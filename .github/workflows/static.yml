@@ -36,8 +36,11 @@ jobs:
         with:
           node-version: 20.x
           cache: npm
+      - name: Check env
+        shell: bash
+        run: env
       - name: Build pages
-        run: npm i && node script.js
+        run: npm i && SIAPA=${{ env.siapa }} node script.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
