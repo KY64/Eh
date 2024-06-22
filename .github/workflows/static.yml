@@ -47,8 +47,7 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+          retention-days: "0"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Remove artifact
-        run: rm -rf "$RUNNER_TEMP/artifact.tar"
